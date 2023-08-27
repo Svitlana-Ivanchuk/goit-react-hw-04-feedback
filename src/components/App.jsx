@@ -14,12 +14,17 @@ const initialFeedbacks = {
 export const App = () => {
   const [feedbacks, setFeedbacks] = useState(initialFeedbacks);
 
-  const handelClick = stateName => {
-    const feedbacksUpgrade = prevState => ({
-      ...prevState,
-      [stateName]: prevState[stateName] + 1,
-    });
-    switch (stateName) {
+  const handelClick = evt => {
+    console.log(evt);
+    const feedbacksUpgrade = prevState => {
+      //console.log(prevState[evt]);
+      return {
+        ...prevState,
+        [evt]: prevState[evt] + 1,
+      };
+    };
+
+    switch (evt) {
       case 'good':
         setFeedbacks(feedbacksUpgrade);
         break;
